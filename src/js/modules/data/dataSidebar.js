@@ -1,6 +1,7 @@
 export function dataSidebar() {
 	
 	let menu_data = [
+		{id: "user", icon: "mdi mdi-account", value:"User"},
 		{id: "tables", icon: "mdi mdi-table", value:"Tables", data:[
 			{ id: "table1", value: "Table1"},
 			{ id: "table2", value: "Table2"},

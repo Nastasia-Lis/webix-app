@@ -8,8 +8,7 @@ export function header() {
             }
             },
             { view: "label", label: "My App"},
-            {},
-            {height: 40, type:"icon", icon:"wxi-user",  view:"button", label:"Profile", width:100, css:"webix_transparent"}
+            
         ]
     };
 
