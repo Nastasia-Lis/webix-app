@@ -1,18 +1,48 @@
-import * as userAuthData from "./data/userAuthData.js";
-export function userLogin () {
+import * as header from "./header.js";
+import * as sidebar from "./sidebar.js";
+import * as multiviewSidebar from "./multiviewSidebar.js";
 
+
+
+
+
+import * as userAuthData from "./data/userAuthData.js";
+export function userLogin (components) {
     function submit(){
         this.getParentView().validate();
         // webix.message(JSON.stringify($$("formAut").getValues(), null, 2));
         // if (userAuthData.userAuthData()===)
-        let userData = (($$("formAuth").getValues()));
-        // console.log(($$("formAuth").getValues()).username);
+        
+        // let userData = (($$("formAuth").getValues()));
 
+        let userData = (($$("formAuth").getValues()));
 
         if (userAuthData.userAuthData().username ===userData.username&&userAuthData.userAuthData().password ===userData.password){
             console.log('y');
+            // webix.ui([
+                
+            //     components
+            // ],$$("root"));
+
+            
+                
+            
+            // webix.ui({
+                
+            //     rows: [components]
+            // }, $$('layout'), $$('formAuth'));
+            
+            
+              
+
+
+
+            // webix.ui([
+            //     components
+            //   ], $$('formAuth'));
+            //   this.disable();
         } else {
-            console.log('n');
+            // webix.message({ type:"error", text:"Form data are invalid" });
         }
     }
 
@@ -20,18 +50,23 @@ export function userLogin () {
     return {
         view:"form",
         id:"formAuth",
-        width: 450,
+        
+        
         elements: [
-            {view:"text", label:"Username", name:"username"},
+    
+            {view:"text", label:"Username", name:"username", },
             {view:"text", label:"Password", name:"password",
             type:"password"},
             {view:"button", value: "Submit", width: 150, align:"center",
             click:submit}
+        
+            
         ],
 
         rules:{
             "username":webix.rules.isNotEmpty,
             "password":webix.rules.isNotEmpty
+            
         },
 
         on:{
