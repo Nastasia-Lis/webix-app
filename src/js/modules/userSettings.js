@@ -1,139 +1,64 @@
-// export function userSettings () {
+export function userSettings () {
     
-//     const selectValues = () =>{                                                       
-//         let panelSelectValues = $$("panelSelect").getValue();
-//         let themeSelectValues = $$("themeSelectValues").getValue();
-//         console.log(panelSelectValues, themeSelectValues);
-        
-//         if (panelSelectValues=="full"){
-//             let positionSidebar = "collapsed: true";
-//             console.log(positionSidebar);
-//         } 
+    function collapsedSidebar(){
+        if($$("collapsedSelect").getValue()=="collapsed"){
+            $$('sidebarMain').collapse();
+        } else{
+            $$('sidebarMain').expand();
+        }
+    }
 
-//         if (themeSelectValues=="light"){
-//             console.log("1111");
-//         } else{
-//             console.log("222");
-//         }
-//     };
-    
-//     let formSettings = [
-//         {   view:"select",id:"panelSelect", 
-//             label:"Боковая панель", 
-//             options:[
-//                 { value:"Развёрнута", id:"full" },
-//                 { value:"Свёрнута", id:"part" }], 
-//             labelWidth:130, labelPosition:"top"},
-//         {   view:"select", 
-//             value: "light", 
-//             id: "themeSelectValues",
-//             label:"Тема", 
-//             options:[
-//                 { value:"Светлая", id:"light" },
-//                 { value:"Тёмная", id:"dark" }], 
-//             labelWidth:130, 
-//             labelPosition:"top"},
-//         {   view:"button", 
-//             id:"buttonSelect",
-//             value:"Confirm", 
-//             width:200, 
-//             click:selectValues 
-//         },
-//         {}
+    function themeSidebar(){
+        if($$("themeSidebarSelect").getValue()=="dark"){
+            $$("header").define("css","webix_dark");
+            $$("sidebarMain").define("css","webix_dark");
+        } else{
+            webix.html.removeCss( $$("header").getNode(), "webix_dark");
+            webix.html.removeCss( $$("sidebarMain").getNode(), "webix_dark");
+        }  
+    }
 
-        
-        
-//     ];
-
-    
-//     const userSettings = {
-//         margin:30, 
-//         cols:[
-//             { margin:30, 
-//               rows:[
-//                 { 
-//                     view:"form", 
-//                     scroll:false, 
-//                     width:300, 
-//                     elements: formSettings 
-//                 }
-//             ]}
-//         ]
-//     };
-
-//     return userSettings;
-
-
-// }
-
-    let positionSidebar = false; 
-
-    const selectValues = () =>{
-           
-        let panelSelectValues;
-        let themeSelectValues;
-
-        $$("panelSelect")& $$("themeSelectValues")==true
-            panelSelectValues = $$("panelSelect").getValue();
-            //themeSelectValues = $$("themeSelectValues").getValue();
-
-            if (panelSelectValues=="full"){
-                let positionSidebar = false;
-                console.log( positionSidebar);
-            } 
-
- 
-        return positionSidebar;
-
-    };
-    
-    let formSettings = [
-        {   view:"select",id:"panelSelect", 
-            label:"Боковая панель", 
+    const settingsSidebar = [
+        {template:"<h3 class='webix_strong'>Боковая панель</h3>",type:"clean",height: 60, margin:20},
+        {   view:"select",id:"collapsedSelect", 
+            label:"Вид", 
+            click:collapsedSidebar,
             options:[
-                { value:"Развёрнута", id:"full" },
-                { value:"Свёрнута", id:"part" }], 
+                { value:"Развёрнута", id:"expand" },
+                { value:"Свёрнута", id:"collapsed" }], 
             labelWidth:130, labelPosition:"top"},
+
         {   view:"select", 
             value: "light", 
-            id: "themeSelectValues",
+            id: "themeSidebarSelect",
             label:"Тема", 
+            click:themeSidebar,
             options:[
                 { value:"Светлая", id:"light" },
                 { value:"Тёмная", id:"dark" }], 
             labelWidth:130, 
             labelPosition:"top"},
-        {   view:"button", 
-            id:"buttonSelect",
-            value:"Confirm", 
-            width:200, 
-            click:selectValues 
-        },
-        {}
-
-        
-        
+        {}     
     ];
 
-    
     const userSettings = {
-        margin:30, 
         cols:[
-            { margin:30, 
-              rows:[
+            { 
+                rows:[
                 { 
                     view:"form", 
+                    
                     scroll:false, 
+                    
                     width:300, 
-                    elements: formSettings 
+                    elements: settingsSidebar
                 }
             ]}
         ]
     };
 
-    export {
-        userSettings,
-        selectValues,
-        positionSidebar
-    };
+    return userSettings;
+
+}
+
 

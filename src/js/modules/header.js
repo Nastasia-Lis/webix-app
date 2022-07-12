@@ -1,13 +1,15 @@
 export function header() {
     const header = {
         view: "toolbar", 
-        padding:3, 
+        id: "header",
+        padding:3,
+        hidden:true, 
         elements: [
             { view: "icon", icon: "mdi mdi-menu", click: function(){
-            $$("$sidebar1").toggle();
+            $$("sidebarMain").toggle();
             }
             },
-            { view: "label", label: "My App"},
+            { view: "label", label: "App"},
             
         ]
     };

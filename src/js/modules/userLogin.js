@@ -1,48 +1,28 @@
-import * as header from "./header.js";
-import * as sidebar from "./sidebar.js";
-import * as multiviewSidebar from "./multiviewSidebar.js";
-
-
-
-
-
 import * as userAuthData from "./data/userAuthData.js";
-export function userLogin (components) {
+
+export function userLogin () {
     function submit(){
         this.getParentView().validate();
-        // webix.message(JSON.stringify($$("formAut").getValues(), null, 2));
-        // if (userAuthData.userAuthData()===)
-        
-        // let userData = (($$("formAuth").getValues()));
 
         let userData = (($$("formAuth").getValues()));
 
         if (userAuthData.userAuthData().username ===userData.username&&userAuthData.userAuthData().password ===userData.password){
-            console.log('y');
-            // webix.ui([
-                
-            //     components
-            // ],$$("root"));
+            
+            //-----РАБОЧИЙ ВАРИАНТ
+             $$("formAuth").hide();
+             $$("header").show();
+             $$("sidebarMain").show();
+            $$("userProfile").show();
+             
 
-            
-                
-            
+            //-----2 ВАРИАНТ
             // webix.ui({
-                
-            //     rows: [components]
+            //    rows: [components]
             // }, $$('layout'), $$('formAuth'));
-            
-            
-              
+            //-----2 ВАРИАНТ
 
-
-
-            // webix.ui([
-            //     components
-            //   ], $$('formAuth'));
-            //   this.disable();
         } else {
-            // webix.message({ type:"error", text:"Form data are invalid" });
+            webix.message({ type:"error", text:"Неправильный логин или пароль" });
         }
     }
 
@@ -50,24 +30,17 @@ export function userLogin (components) {
     return {
         view:"form",
         id:"formAuth",
-        
-        
+        maxWidth: 300,
         elements: [
-    
-            {view:"text", label:"Username", name:"username", },
-            {view:"text", label:"Password", name:"password",
+            {},
+            {view:"text", label:"Логин", name:"username", },
+            {view:"text", label:"Пароль", name:"password",
             type:"password"},
-            {view:"button", value: "Submit", width: 150, align:"center",
-            click:submit}
-        
+            {view:"button", value: "Войти", css:"webix_primary",hotkey: "enter", align:"center",
+            click:submit},
+            {}
             
         ],
-
-        rules:{
-            "username":webix.rules.isNotEmpty,
-            "password":webix.rules.isNotEmpty
-            
-        },
 
         on:{
             onValidationError:function(key, obj){
@@ -80,7 +53,11 @@ export function userLogin (components) {
         
               webix.message({ type:"error", text:text });
             }
-          }
+        },
+
+        elementsConfig:{
+            labelPosition:"top"
+        }
 
     };
 }

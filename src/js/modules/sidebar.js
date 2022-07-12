@@ -1,12 +1,13 @@
 import * as dataSidebar from "./data/dataSidebar.js";
 
-import { positionSidebar, } from './userSettings.js';
-export function sidebar() {
+
+ export function sidebar() {
     
     const sidebar = {
         view: "sidebar",
+        id: "sidebarMain",
         data: dataSidebar.dataSidebar(),
-        collapsed: positionSidebar,
+        hidden:true,
         on:{
           onAfterSelect: function(id){
             $$("multiview").setValue(id);
@@ -15,11 +16,11 @@ export function sidebar() {
         ready:function () {
           let firstItem = this.getFirstId();
           this.select(firstItem);
-          console.log(positionSidebar );
         }
     };
 
-    return sidebar;
+   return sidebar;
 
 
-}
+ }
+

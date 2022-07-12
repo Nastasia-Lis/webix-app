@@ -1,24 +1,24 @@
-import * as dataTableOne from "./data/dataTableOne.js";
+
 import * as dataTableCollection from "./data/dataTableCollection.js";
 
 
 
-export function tableOne(id,src,idPager) {
+export function tableOne(idTable,src,idPager) {
 
     function addNewElement(){
-        const table = $$(id); 
+        const table = $$(idTable); 
         const id_new_elem = table.add({"product":"","available":"","date":"","color":"","code":"","price":"",}); 
         table.showItem(id_new_elem); 
     }
 
-    function removeElement(id){
-        $$(id).remove(id);
+    function removeElement(idElement){
+        $$(idTable).remove(idElement);
     }
 
     
     const tableOne = { 
         view:"datatable",
-        id:id,
+        id:idTable,
         autoConfig:true,
         data:src,
         resizeColumn: true,
@@ -44,7 +44,7 @@ export function tableOne(id,src,idPager) {
             { id:"color", header:[ "Цвет", { content:"textFilter" } ], editor:"color", template:`<span style="background-color:#color#; 
           border-radius:4px; padding-right:10px;">&nbsp</span> #color#`,minWidth:60,fillspace:true},
             { id:"code", header:[ "Код", { content:"textFilter" } ], editor:"text", minWidth:60, fillspace:true, sort:"int"},
-            { id:"price", header:[ "Цена", { content:"textFilter" } ], editor:"text", format:webix.i18n.priceFormat, minWidth:60, fillspace:true, sort:"int"},
+            { id:"price", header:[ "Цена", { content:"textFilter" } ], editor:"text", template:"#price# руб", minWidth:60, fillspace:true, sort:"int"},
 
             { header:[{text:"<span class='webix_icon wxi-plus-circle'></span>", colspan:2}], width:50, template:"<span class='webix_icon wxi-drag'></span>" },
             { header:["",""], width:50, template:"{common.trashIcon()}" }
@@ -70,22 +70,7 @@ export function tableOne(id,src,idPager) {
          on: {
             onBeforeDrag:function(data, e){ 
                 return (e.target||e.srcElement).className == "webix_icon wxi-drag";
-              },
-
-
-            onHeaderClick:function(id, ev){
-                let grid = this;
-                
-                $$("editor").getBody().setValues({
-                    header: this.getColumnConfig(id.column).header[0].text
-                  });
-                $$("editor").config.callback = function(value){
-                  grid.getColumnConfig(id.column).header[0].text = value;
-                  grid.refreshColumns();
-                };
-                $$("editor").show(ev);
-                $$("editor").getBody().focus();
-            }
+              }
          }
 
         

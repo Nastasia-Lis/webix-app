@@ -1,13 +1,13 @@
-export function tableToolbar() {
+export function tableToolbar(idTable) {
     function resetFilters(){
-        const table = $$("tableProducts");
+        const table = $$(idTable);
         table.filter(); 
         table.showItem(table.getFirstId()); 
         table.setState({filter:{}}); 
       }
 
       function exportToExcel(){
-        webix.toExcel("tableProducts", {
+        webix.toExcel(idTable, {
           filename:"ProductTable",
           filterHTML:true,
           styles:true
@@ -22,8 +22,8 @@ export function tableToolbar() {
 
         cols:[	
 
-          { view:"button", label:"Reset filters", click:resetFilters },
-          { view:"button", label:"Export to Excel", click:exportToExcel }
+          { view:"button", label:"Сбросить фильтры", click:resetFilters },
+          { view:"button", label:"Экспортировать как Excel", click:exportToExcel }
         ]
     };
 }
