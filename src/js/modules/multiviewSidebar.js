@@ -17,7 +17,8 @@ export function multiviewSidebar (){
         id: "multiview", 
         
         cells:[
-            {id: "user", cols: [{},{rows:[{},userLogin.userLogin(),userProfile.userProfile(),{}]},{}]},
+            {id: "userProf", rows: [userProfile.userProfile()]},
+            {id: "userAuth", cols: [{},{id: "layoutLogin",rows:[{},userLogin.userLogin(),{}]},{}]},
             
             { id: "table1", rows:[tableToolbar.tableToolbar("tableOne"),tableOne.tableOne("tableOne", dataTableOne.dataTableOne(),"pagerTableOne"), {cols:[{},pagerTable.pagerTable("pagerTableOne"),{}]}]},
             { id: "table2", rows:[tableToolbar.tableToolbar("tableTwo"),tableOne.tableOne("tableTwo", dataTableTwo.dataTableTwo(),"pagerTableTwo"), {cols:[{},pagerTable.pagerTable("pagerTableTwo"),{}]}]},

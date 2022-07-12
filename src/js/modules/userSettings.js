@@ -19,7 +19,7 @@ export function userSettings () {
     }
 
     const settingsSidebar = [
-        {template:"<h3 class='webix_strong'>Боковая панель</h3>",type:"clean",height: 60, margin:20},
+        {template:"<h3 class='webix_strong'>Настройки боковой панели</h3>",type:"clean",height: 60, margin:20},
         {   view:"select",id:"collapsedSelect", 
             label:"Вид", 
             click:collapsedSidebar,

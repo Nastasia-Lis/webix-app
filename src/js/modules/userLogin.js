@@ -7,25 +7,17 @@ export function userLogin () {
         let userData = (($$("formAuth").getValues()));
 
         if (userAuthData.userAuthData().username ===userData.username&&userAuthData.userAuthData().password ===userData.password){
-            
-            //-----РАБОЧИЙ ВАРИАНТ
-             $$("formAuth").hide();
-             $$("header").show();
-             $$("sidebarMain").show();
-            $$("userProfile").show();
-             
-
-            //-----2 ВАРИАНТ
-            // webix.ui({
-            //    rows: [components]
-            // }, $$('layout'), $$('formAuth'));
-            //-----2 ВАРИАНТ
+ 
+            $$("formAuth").hide();
+            $$("header").show();
+            $$("sidebarMain").show();
+            $$("sidebarMain").remove("userAuth");
+            $$("sidebarMain").select("userProf");
 
         } else {
             webix.message({ type:"error", text:"Неправильный логин или пароль" });
         }
     }
-
 
     return {
         view:"form",
