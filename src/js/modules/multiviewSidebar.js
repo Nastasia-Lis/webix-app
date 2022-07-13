@@ -1,4 +1,4 @@
-import * as userLogin from "./userLogin.js";
+import  {formLogin} from "./userLogin.js";
 import * as userProfile from "./userProfile.js";
 
 import * as tableTemplate from "./tableTemplate.js";
@@ -27,7 +27,7 @@ export function multiviewSidebar (){
                     {},
                     {   rows:[
                             {},
-                            userLogin.userLogin(),
+                            formLogin,
                             {}
                         ]},
                     {}

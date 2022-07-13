@@ -1,4 +1,11 @@
+import {hideInterfaceElements} from './userLogin.js';
+
 export function header() {
+    function logoutClick () {
+        localStorage.setItem("authSuccess", 0);
+        hideInterfaceElements ();
+    }
+    
     const header = {
         view: "toolbar", 
         id: "header",
@@ -10,6 +17,8 @@ export function header() {
             }
             },
             { view: "label", label: "App"},
+            {},
+            { view:"button", label:"Выйти", width: 100, click:logoutClick}
             
         ]
     };
