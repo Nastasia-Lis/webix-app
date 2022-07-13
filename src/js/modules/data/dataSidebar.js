@@ -1,6 +1,5 @@
 export function dataSidebar() {
-	
-	let menu_data = [
+	return [
 		{id: "userAuth", icon: "mdi mdi-account", value:"Аутентификация"},
 		{id: "userProf", icon: "mdi mdi-account", value:"Профиль"},
 		{id: "tables", icon: "mdi mdi-table", value:"Таблицы", data:[
@@ -10,6 +9,4 @@ export function dataSidebar() {
 		]},
 		{id: "settings", icon: "webix_icon mdi mdi-cogs", value:"Настройки"}
 	];
-
-	return menu_data;
 } 

@@ -1,6 +1,6 @@
 import * as userAuthData from "./data/userAuthData.js";
-export function userProfile() {
 
+export function userProfile() {
     return {
         view:"datatable",
         id: "userProfile",   

@@ -1,5 +1,5 @@
 export function pagerTable(id) {
-    let pagerTable = {
+  return {
         view:"pager",
         id:id,
         size:20,
@@ -7,5 +7,4 @@ export function pagerTable(id) {
         template:`{common.first()} {common.prev()} 
       {common.pages()} {common.next()} {common.last()}`
       };
-    return pagerTable;
 }
