@@ -24,13 +24,12 @@ export function userLogin () {
         id:"formAuth",
         maxWidth: 300,
         elements: [
-            {},
             {view:"text", label:"Логин", name:"username", },
             {view:"text", label:"Пароль", name:"password",
             type:"password"},
             {view:"button", value: "Войти", css:"webix_primary",hotkey: "enter", align:"center",
             click:submit},
-            {}
+            
             
         ],
 

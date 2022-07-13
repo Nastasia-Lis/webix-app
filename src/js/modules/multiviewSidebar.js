@@ -1,7 +1,7 @@
 import * as userLogin from "./userLogin.js";
 import * as userProfile from "./userProfile.js";
 
-import * as userSettings from './userSettings.js';
+import {userSettings} from './userSettings.js';
 import * as tableOne from "./tableOne.js";
 
 import * as dataTableOne from "./data/dataTableOne.js";
@@ -23,7 +23,7 @@ export function multiviewSidebar (){
             { id: "table1", rows:[tableToolbar.tableToolbar("tableOne"),tableOne.tableOne("tableOne", dataTableOne.dataTableOne(),"pagerTableOne"), {cols:[{},pagerTable.pagerTable("pagerTableOne"),{}]}]},
             { id: "table2", rows:[tableToolbar.tableToolbar("tableTwo"),tableOne.tableOne("tableTwo", dataTableTwo.dataTableTwo(),"pagerTableTwo"), {cols:[{},pagerTable.pagerTable("pagerTableTwo"),{}]}]},
             { id: "table3", rows:[tableToolbar.tableToolbar("tableThree"),tableOne.tableOne("tableThree", dataTableThree.dataTableThree(),"pagerTableThree"), {cols:[{},pagerTable.pagerTable("pagerTableThree"),{}]}]},
-            {id: "settings", cols: [userSettings.userSettings()]}
+            {id: "settings", cols: [userSettings]}
         ],
         animate: false,
        

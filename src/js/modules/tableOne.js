@@ -1,7 +1,4 @@
-
 import * as dataTableCollection from "./data/dataTableCollection.js";
-
-
 
 export function tableOne(idTable,src,idPager) {
 
